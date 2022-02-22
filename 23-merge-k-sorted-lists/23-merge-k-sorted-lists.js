@@ -13,6 +13,7 @@ var mergeKLists = function(lists) {
     
     if(lists.length == 0)
         return null
+    
    let mergeTwoLists = function(l1, l2) {
     
     
@@ -44,18 +45,29 @@ var mergeKLists = function(lists) {
     
     
     
-    k = lists.length;
-    head = lists[0];
-    cur = head;
+   
+  
     
-    for(i = 1 ; i < k; i++){
-        cur = mergeTwoLists(cur,lists[i])
+    while (lists.length > 1){
       
+       k = lists.length;
+       mergedLists = [];
+        
+       for(i = 0 ; i < k; i+=2 ){
+           l1 = lists[i];
+           l2 = ((i+1) < k) ? lists[i+1] : null;
+           mergedLists.push(mergeTwoLists(l1,l2));
+      
+       }
+        
+        lists = mergedLists
+        
     }
     
     
     
     
     
-    return cur;
+    
+    return lists[0];
 };
