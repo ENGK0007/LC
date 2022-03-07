@@ -4,15 +4,21 @@
  * @return {string}
  */
 var minWindow = function(s, t) {
+    // edge case
     if( t == "")
         return ""
+    // sliding window pointer
     l = 0;
     r = 0;
-    
+    // result pointer and length
     res = [-1,-1]
     reslen = Number.MAX_SAFE_INTEGER;
+    
+    // t map and window map
     Smap = new Map();
     Tmap = new Map();
+    
+    // setup map for string t
     for(let char of t){
         need++;
         console.log(char)
@@ -23,22 +29,24 @@ var minWindow = function(s, t) {
             Tmap.set(char,1);
         
     }
+    
+    // have: char in window ; need: char required
     var have = 0;
     var need = Tmap.size;
     
     
     
-  //  console.log(Tmap);
+ 
     
-    
+    // iterate all character
      for(r = 0; r < s.length; r++){
         
         c = s[r]
          
+         
         if(Smap.has(c))
             Smap.set(c,Smap.get(c)+1);
-        else
-            Smap.set(c,1);
+       
       
         if(Tmap.has(c) && Smap.get(c) == Tmap.get(c))
             have += 1;
