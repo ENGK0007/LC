@@ -12,9 +12,11 @@
  * @return {boolean}
  */
 var isSameTree = function(p, q) {
+    //base case
     if (p == null && q == null)
         return true
-    if ( (p == null && q != null) || (q == null && p != null) || (p.val != q.val))
+    // check if both are same
+    if ( p == null || q == null || (p.val != q.val))
         return false
     
     
