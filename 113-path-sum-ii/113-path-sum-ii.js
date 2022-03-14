@@ -48,9 +48,8 @@ var pathSum = function(root, targetSum) {
     }
     
     console.log(result)
-    for( i = 0; i < result.length ; i++){
-        result[i].unshift(root.val)
-    }
+  
+    result.forEach( res => res.unshift(root.val));
     console.log('result: ' + result)
     console.log(result)
     // else look for left and right nodes
