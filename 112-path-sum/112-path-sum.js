@@ -13,23 +13,18 @@
  */
 var hasPathSum = function(root, targetSum) {
     
-    
+    //edge case
     if(root == null)
-        return false
+        return false    
     
-    console.log(root.val,  targetSum)
+    //if child node, check if node value equals to remainder sum
+    if ((root.right == null) && (root.left == null))
+        return root.val == targetSum 
     
-    if ((root.right == null) && (root.left == null)){
-       // if(targetSum == rp)
-        console.log('test')
-        return root.val == targetSum ;
-    }
-
-    
-    
+   
     var remainder = targetSum - root.val
     
-   // console.log('test', remainder)
+    // else look for left and right nodes
     
     return hasPathSum (root.right, remainder) || hasPathSum (root.left, remainder)
     
