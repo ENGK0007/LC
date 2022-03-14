@@ -12,6 +12,8 @@
  * @return {number[][]}
  */
 var pathSum = function(root, targetSum) {
+    // time: O(n)
+    // space: O(n^2), imbalance tree , all lies to one side, 
     
     var result = []
     //if no path then terminates
@@ -19,10 +21,11 @@ var pathSum = function(root, targetSum) {
     if(root == null)
         return  []  
     
-    //if child node, check if node value equals to remainder sum
+    //if leaf node, check if node value equals to remainder sum, return the leaf node
     if ((root.right == null) && (root.left == null))
         return (root.val == targetSum) ?  [[root.val]] : []
     else{
+        // if not leaf node : check if left or right nodes found paths
         var remainder = targetSum - root.val
         var leftpath = pathSum (root.left, remainder)
         var rightpath = pathSum (root.right, remainder)
@@ -34,6 +37,7 @@ var pathSum = function(root, targetSum) {
         console.log('rightpath '+ rightpath)
         console.log(rightpath)
         
+        // add path to results
         if( rightpath != null && root.right != null){
             for( const r of rightpath){
                 result.push(r)
@@ -48,8 +52,12 @@ var pathSum = function(root, targetSum) {
     }
     
     console.log(result)
-  
-    result.forEach( res => res.unshift(root.val));
+    // add root.val to each path found
+    for( i = 0; i < result.length ; i++){
+        result[i].unshift(root.val)
+    }
+    
+   // result.forEach( res => res.unshift(root.val));
     console.log('result: ' + result)
     console.log(result)
     // else look for left and right nodes
