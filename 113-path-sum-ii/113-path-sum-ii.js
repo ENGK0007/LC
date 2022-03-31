@@ -38,13 +38,13 @@ var pathSum = function(root, targetSum) {
         console.log(rightpath)
         
         // add path to results
-        if( rightpath != null && root.right != null){
+        if( rightpath != null){
             for( const r of rightpath){
                 result.push(r)
             }
         }
            
-        if( leftpath != null && root.left != null){
+        if( leftpath != null ){
              for( const l of leftpath){
                 result.push(l)
             }
