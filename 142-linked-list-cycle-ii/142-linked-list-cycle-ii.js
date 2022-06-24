@@ -34,6 +34,7 @@ var detectCycle = function(head) {
         return null;
     }
     
+    // reset pointer and shift both pointers until both of them meet 
     fast = head;
     
     while(fast != slow){
